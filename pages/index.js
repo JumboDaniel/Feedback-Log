@@ -5,6 +5,7 @@ import Logo from "../assets/logo";
 //Node imports
 import Head from "next/head";
 import { Button, Heading, Flex } from "@chakra-ui/react";
+import EmptyState from "@/components/EmptyState";
 
 const Home = () => {
   const auth = useAuth();
@@ -13,7 +14,7 @@ const Home = () => {
       className={styles.container}
       as="main"
       align="center"
-      maxW="100%"
+      W="100%"
       justify="center"
       gap="5"
     >
@@ -22,16 +23,13 @@ const Home = () => {
         <meta name="description" content="Feedback log" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Logo />
       <main className={styles.main}>
-        <Logo />
         {auth.user ? (
-          <Button onClick={(e) => auth.signOut()}>Sign Out</Button>
+            <Button onClick={(e) => auth.signout()}>Sign Out</Button>
         ) : (
           <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
         )}
-
-        <section>{JSON.stringify(auth.user)}</section>
       </main>
     </Flex>
   );
