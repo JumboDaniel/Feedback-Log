@@ -4,7 +4,7 @@ import { useAuth } from "@/lib/auth";
 import Logo from "../assets/logo";
 //Node imports
 import Head from "next/head";
-import { Button, Heading, Flex } from "@chakra-ui/react";
+import { Button, Heading, Flex, Box } from "@chakra-ui/react";
 import EmptyState from "@/components/EmptyState";
 
 const Home = () => {
@@ -23,6 +23,7 @@ const Home = () => {
         <meta name="description" content="Feedback log" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Flex  align-items="center" justify-content="center">
       <Logo />
       <main className={styles.main}>
         {auth.user ? (
@@ -31,6 +32,8 @@ const Home = () => {
           <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
         )}
       </main>
+      </Flex>
+
     </Flex>
   );
 };

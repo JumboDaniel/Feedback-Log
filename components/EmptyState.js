@@ -1,7 +1,8 @@
 import React from "react";
 import { Heading, Box, Button } from "@chakra-ui/react";
 import Dashboard from "./dashboard";
-
+import AddSiteModal from "./AddSiteModal";
+import NewSiteModal from "./NewSiteModal";
 const EmptyState = () => (
   <Dashboard>
     <Box
@@ -23,9 +24,7 @@ const EmptyState = () => (
       <Heading as="h3" size="md" p={3}>
         Welcome, let's us get started!{" "}
       </Heading>
-      <Button variant="solid" size="md" m={3} fontWeight='medium' >
-        Add your first site{" "}
-      </Button>
+      <NewSiteModal/>
     </Box>
   </Dashboard>
 );
