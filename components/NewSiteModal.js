@@ -13,20 +13,39 @@ import {
   FormControl,
   useDisclosure,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import { createSite } from "@/lib/db";
+import { useAuth } from "@/lib/auth";
 
 function NewSiteModal() {
   //Chakra Modal Hook
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const toast= useToast()
+  const auth = useAuth()
   //FormControl Reactform hook
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(); 
-  const onSubmit = (data) => createSite(data);
+  } = useForm();
+  const onSubmit = (data) => {
+    createSite({
+      author: auth.user.uid,
+      createdAt: new Date().toISOString(),
+      ...data
+    }); 
+
+    toast({
+      title:"Created Site Sucessfully",
+      description: "We have successfully created a new site",
+      status: 'success',
+      duration: 4000,
+      isClosable: true,
+    })
+    onClose();
+  };
   console.log(errors);
 
   return (
