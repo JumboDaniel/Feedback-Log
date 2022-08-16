@@ -21,7 +21,9 @@ const EmptyState = () => (
       <Heading as="h3" size="md" p={3}>
         Welcome, let's us get started!
       </Heading>
-      <NewSiteModal/>
+      <NewSiteModal>
+        Add your first site
+        </NewSiteModal>
     </Box>
 );
 

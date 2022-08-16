@@ -4,6 +4,7 @@ import { useAuth } from "@/lib/auth";
 import EmptyState from "@/components/EmptyState";
 import SiteTableSkeleton from "@/components/SkeletonTable";
 import DashboardShell from "@/components/dashboard";
+import SiteTable from "@/components/SiteTable";
 
 //Node imports
 import { Skeleton, SkeletonCircle, SkeletonText, Box } from "@chakra-ui/react";
@@ -12,9 +13,7 @@ import fetcher from "@/utils/fetcher";
 
 const Dashboard = () => {
   const auth = useAuth();
-  const { data} = useSWR("/api/sites", fetcher);
-  console.log(data);
-
+  const { data } = useSWR("/api/sites", fetcher);
 
   if (!data) {
     return (
@@ -25,7 +24,7 @@ const Dashboard = () => {
   }
   return (
     <DashboardShell>
-      <EmptyState />
+      { data.sites? (<SiteTable sites={data.sites} />) : <EmptyState />}
     </DashboardShell>
   );
 };

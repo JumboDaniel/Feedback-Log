@@ -11,9 +11,13 @@ import {
   BreadcrumbItem,
   BreadcrumbLink,
   Heading,
+  Button,
 } from "@chakra-ui/react";
 import Logo from "@/assets/logo";
 import { useAuth } from "@/lib/auth";
+import NewSiteModal from "./NewSiteModal";
+
+
 
 const DashboardShell = (props) => {
   const { user, signOut } = useAuth();
@@ -34,7 +38,7 @@ const DashboardShell = (props) => {
           <Link m={2} fontWeight="medium">
             {user?.displayName}
           </Link>
-          <Avatar size="sm" src={user?.photoURL } />
+          <Avatar size="sm" src={user?.photoURL} />
         </Flex>
       </Flex>
       <Flex flexDirection="row" backgroundColor="gray.100" p={8} height="100vh">
@@ -52,7 +56,15 @@ const DashboardShell = (props) => {
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Heading m={3}>My Sites </Heading>
+          <Flex flexDirection="row" justifyContent="space-between" alignItems="space-between">
+            {" "}
+            <Heading m={3}>My Sites </Heading>
+
+            <NewSiteModal>
+              + Add Site
+              </NewSiteModal>
+          </Flex>
+
           {props.children}
         </Flex>
       </Flex>

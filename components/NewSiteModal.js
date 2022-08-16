@@ -18,40 +18,54 @@ import {
 import { useForm } from "react-hook-form";
 import { createSite } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
+import { mutate } from "swr";
 
-function NewSiteModal() {
+function NewSiteModal({ children }) {
   //Chakra Modal Hook
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const toast= useToast()
-  const auth = useAuth()
+  const toast = useToast();
+  const auth = useAuth();
+
   //FormControl Reactform hook
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  //On Subbit function
   const onSubmit = (data) => {
-    createSite({
+    //New Site Object
+    const NewSite = {
       author: auth.user.uid,
       createdAt: new Date().toISOString(),
-      ...data
-    }); 
+      ...data,
+    };
+    createSite(NewSite);
 
     toast({
-      title:"Created Site Sucessfully",
+      title: "Created Site Sucessfully",
       description: "We have successfully created a new site",
-      status: 'success',
+      status: "success",
       duration: 4000,
       isClosable: true,
-    })
+    });
     onClose();
   };
   console.log(errors);
 
   return (
     <>
-      <Button onClick={onOpen}>Open Modal</Button>
-
+      <Button
+        backgroundColor="gray.900"
+        color="white"
+        fontWeight="medium"
+        _hover={{ bg: "gray.700" }}
+        _active={{ bg: "gray.800", transform: "scale(0.95)" }}
+        onClick={onOpen}
+      >
+        {children}
+      </Button>
       <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent as="form" onSubmit={handleSubmit(onSubmit)}>
