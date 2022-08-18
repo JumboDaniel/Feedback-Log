@@ -16,9 +16,12 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
+import { mutate } from "swr";
+
+
+//File imports
 import { createSite } from "@/lib/db";
 import { useAuth } from "@/lib/auth";
-import { mutate } from "swr";
 
 function NewSiteModal({ children }) {
   //Chakra Modal Hook

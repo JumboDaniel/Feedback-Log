@@ -10,7 +10,7 @@ import SiteTable from "@/components/SiteTable";
 import { Skeleton, SkeletonCircle, SkeletonText, Box } from "@chakra-ui/react";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
-
+ 
 const Dashboard = () => {
   const auth = useAuth();
   const { data } = useSWR("/api/sites", fetcher);
