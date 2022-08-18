@@ -32,9 +32,9 @@ const Home = () => {
           <Button onClick={(e) => auth.signinWithGithub()}>Sign In</Button>
         )}
       </main>
-      </Flex>
-
+    </Flex>
     </Flex>
   );
-};
+}
 export default Home;
+
