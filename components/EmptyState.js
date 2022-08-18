@@ -16,10 +16,10 @@ const EmptyState = () => (
       width="100%"
     >
       <Heading as="h2" size="lg" p={3}>
-        You haven't added any sites
+        You havent added any sites
       </Heading>
       <Heading as="h3" size="md" p={3}>
-        Welcome, let's us get started!
+        Welcome, lets us get started!
       </Heading>
       <NewSiteModal>
         Add your first site
