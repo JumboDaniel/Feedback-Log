@@ -4,7 +4,7 @@ import { Box, Skeleton, Link } from "@chakra-ui/react";
 import NextLink from "next/link";
 
 // File Import
-import { Table, Tr, Th, Td } from "./Table";
+import { Table, Tr, Th, Td } from "./table";
 import { format, formatISO, parseISO } from "date-fns";
 
  
