@@ -55,7 +55,7 @@ function NewSiteModal({ children }) {
     });
     onClose();
   };
-  console.log(errors);
+  // console.log(errors);
 
   return (
     <>
