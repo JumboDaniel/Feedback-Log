@@ -1,6 +1,6 @@
 //file imports
 import "../styles/globals.css";
-import { Theme } from "@/styles/theme";
+import  Theme  from "@/styles/theme";
 import { ProvideAuth } from "@/lib/auth";
 
 ///Node imports
