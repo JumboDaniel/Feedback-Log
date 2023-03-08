@@ -43,7 +43,7 @@ function NewSiteModal({ children }) {
       author: auth.user.uid,
       createdAt: new Date().toISOString(),
       ...data,
-    };
+    }
     createSite(NewSite);
 
     toast({
