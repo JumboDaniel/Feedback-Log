@@ -21,7 +21,7 @@ const UserFeedback = () => {
       );
     }
     return (
-      <DashboardShell>
+      <DashboardShell name={`Feedbacks`} header={`User Feedbacks`}>
         { data.feedback? (<FeedbackTable allFeedback={data.feedback } />) : <EmptyState />}
       </DashboardShell>
     );

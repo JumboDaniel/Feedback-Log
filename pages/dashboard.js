@@ -23,7 +23,7 @@ const Dashboard = () => {
     );
   }
   return (
-    <DashboardShell>
+    <DashboardShell name={`Site`} header={`My Sites`}>
       { data.sites? (<SiteTable sites={data.sites} />) : <EmptyState />}
     </DashboardShell>
   );

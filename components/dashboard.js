@@ -17,8 +17,6 @@ import Logo from "@/assets/logo";
 import { useAuth } from "@/lib/auth";
 import NewSiteModal from "./NewSiteModal";
 
-
-
 const DashboardShell = (props) => {
   const { user, signOut } = useAuth();
   return (
@@ -52,17 +50,22 @@ const DashboardShell = (props) => {
           <Breadcrumb>
             <BreadcrumbItem>
               <BreadcrumbLink m={3} color="gray.700" font="sm">
-                Sites
+                {props.name}
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
-          <Flex flexDirection="row" justifyContent="space-between" alignItems="space-between">
+          <Flex
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="space-between"
+          >
             {" "}
-            <Heading m={3}>My Sites </Heading>
-
-            <NewSiteModal>
-              + Add Site
-              </NewSiteModal>
+            <Heading m={3}>{props.header} </Heading>
+            {props.name === "site" ? (
+              <NewSiteModal>+ Add Site</NewSiteModal>
+            ) : (
+              <div></div>
+            )}
           </Flex>
 
           {props.children}
