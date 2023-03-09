@@ -1,18 +1,19 @@
 //Node imports
-import { Box, Skeleton, Link, Code } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { Box, Skeleton, Link, Code, Switch, IconButton } from "@chakra-ui/react";
+// import { DeleteIcon } from '@chakra-ui/icons'
 
 // File Import
 import { Table, Tr, Th, Td } from "./table";
-import { format, formatISO, parseISO } from "date-fns";
+import {RemoveButton} from "@/components/feedback/RemoveFeedback"
 
  
 const feedbackbackTable = ({ allFeedback }) => {
+  console.log(allFeedback)
   return (
     <Table>
       <thead>
         <Tr>
-          <Th>Name</Th>
+          <Th>Name</Th> 
           <Th>Feedback</Th>
           <Th>Route</Th>
           <Th>Status</Th>
@@ -22,13 +23,19 @@ const feedbackbackTable = ({ allFeedback }) => {
       <tbody>
         {allFeedback.map((feedback) => (
           <Box as="tr" key={feedback.id}>
-            <Td fontWeight="medium">{feedback.Name}</Td>
+            <Td fontWeight="medium">{feedback.author}</Td>
             <Td>{feedback.text}</Td>
             <Td>
                 <Code>{`/`}</Code>
             </Td>
-            <Td>{feedback.status}</Td> 
-            <Td>Remove</Td>
+            <Td>
+                <Switch
+                defaultChecked={feedback?.status === "active "}/>
+                
+                </Td> 
+            <Td>
+               <RemoveButton feedbackId={feedback.id}/>
+            </Td>
           </Box>
         ))}
       </tbody>
