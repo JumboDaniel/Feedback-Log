@@ -24,7 +24,7 @@ const Dashboard = () => {
   }
   return (
     <DashboardShell name={`Site`} header={`My Sites`}>
-      { data.sites? (<SiteTable sites={data.sites} />) : <EmptyState />}
+      { data.sites.length? (<SiteTable sites={data.sites} />) : <EmptyState />}
     </DashboardShell>
   );
 };
