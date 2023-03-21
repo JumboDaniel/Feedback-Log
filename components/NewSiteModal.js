@@ -43,8 +43,8 @@ function NewSiteModal({ children }) {
       author: auth.user.uid,
       createdAt: new Date().toISOString(),
       ...data,
-    };
-    createSite(NewSite);
+    }
+    const {id} = createSite(NewSite);
 
     toast({
       title: "Created Site Sucessfully",
@@ -53,6 +53,13 @@ function NewSiteModal({ children }) {
       duration: 4000,
       isClosable: true,
     });
+    mutate(
+      ["/api/sites", auth.user._delegate.accessToken],
+      async (data) =>{
+        return {sites:[...data.sites, {id,...NewSite}]}
+      },
+      false
+    )
     onClose();
   };
   // console.log(errors);
