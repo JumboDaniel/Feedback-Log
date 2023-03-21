@@ -13,7 +13,7 @@ const Dashboard = () => {
   const {user} = useAuth();
   // const token = user._delegate.accessToken
   // console.log(token)
-  const { data } = useSWR(user ? ["/api/sites", user._delegate.accessToken] : null, fetcher);
+  const { data } = useSWR(user ? ["/api/sites", user?._delegate?.accessToken] : null, fetcher);
   console.log(data)
   if (!data) {
     return (
@@ -23,8 +23,8 @@ const Dashboard = () => {
     );
   }
   return (
-    <DashboardShell name={`Site`} header={`My Sites`}>
-      { data.sites.length? (<SiteTable sites={data.sites} />) : <EmptyState />}
+    <DashboardShell name={`site`} header={`My Sites`}>
+      { data?.sites?.length? (<SiteTable sites={data?.sites} />) : <EmptyState />}
     </DashboardShell>
   );
 };

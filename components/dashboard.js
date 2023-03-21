@@ -46,9 +46,9 @@ const DashboardShell = (props) => {
             {user?.displayName}
           </Link>
           <Avatar size="sm" src={user?.photoURL} />
-          {/* <Link m={2} fontWeight="medium" onClick={signout()}>
+          <Link m={2} fontWeight="medium" onClick={()=>signout()}>
             Logout
-          </Link> */}
+          </Link>
         </Flex>
       </Flex>
       <Flex flexDirection="row" backgroundColor="gray.100" p={8} height="100vh">
@@ -76,7 +76,7 @@ const DashboardShell = (props) => {
             {props.name === "site" ? (
               <NewSiteModal>+ Add Site</NewSiteModal>
             ) : (
-              <div></div>
+              <div>ddddddddd</div>
             )}
           </Flex>
 
